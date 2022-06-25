@@ -41,10 +41,10 @@
                      x-transition:leave-end="opacity-0 scale-90">
                     <p class="font-montserrat font-bold tracking-wide text-sm">Status de la demande:</p>
                     @if($rdv->status == 1)
-                        <p class="font-montserrat font-bold tracking-wide text-sm text-green-600">Accepté</p>
-                        <p class="font-montserrat font-bold tracking-wide text-sm text-gray-600">{{ Carbon\Carbon::create($rdv->date)->locale('fr_FR')->isoFormat('LLLL')}}</p>
+                    <p class="font-montserrat font-bold tracking-wide text-sm text-green-600">Accepté</p>
+                    <p class="font-montserrat font-bold tracking-wide text-sm text-gray-600">{{ Carbon\Carbon::create($rdv->date)->locale('fr_FR')->isoFormat('LLLL')}}</p>
                     @elseif($rdv->status == 2)
-                        <p class="font-montserrat font-bold tracking-wide text-sm text-green-600">Terminé</p>
+                    <p class="font-montserrat font-bold tracking-wide text-sm text-green-600">Terminé</p>
                         <p class="font-montserrat font-bold tracking-wide text-sm text-gray-600">{{ Carbon\Carbon::create($rdv->date)->locale('fr_FR')->isoFormat('LLLL')}}</p>
                     @elseif($rdv->status == -1)
                         <p class="font-montserrat font-bold tracking-wide text-sm text-red-600">Refusé</p>

@@ -40,7 +40,7 @@
                 <ul class="mt-2">
                     <!-- Links -->
                     <li class="mt-8">
-                        <a href="/espace-client/mes-articles" class="flex items-center shadow px-3 py-2 rounded-lg @if(request()->path() == "espace-client/mes-articles") bg-cyan-600 text-white @else hover:scale-105 transition hover:bg-cyan-600 hover:text-white @endif">
+                        <a href="/tableau-de-bord/mes-rdv" class="flex items-center shadow px-3 py-2 rounded-lg @if(request()->path() == "tableau-de-bord/mes-rdv") bg-cyan-600 text-white @else hover:scale-105 transition hover:bg-cyan-600 hover:text-white @endif">
                             <svg
                                 class="fill-current h-5 w-5"
                                 viewBox="0 0 24 24">
@@ -57,23 +57,6 @@
                         </a>
                     </li>
 
-                    <li class="mt-8">
-                        <a href="/espace-client/mes-articles" class="flex items-center shadow px-3 py-2 rounded-lg  @if(request()->path() == "espace-client/mes") bg-cyan-600 text-white @else hover:scale-105 transition hover:bg-cyan-600 hover:text-white @endif ">
-                            <svg
-                                class="fill-current h-5 w-5 "
-                                viewBox="0 0 24 24">
-                                <path
-                                    d="M19 19H5V8h14m-3-7v2H8V1H6v2H5c-1.11 0-2 .89-2
-							2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0
-							00-2-2h-1V1m-1 11h-5v5h5v-5z"></path>
-                            </svg>
-                            <span
-                                class="ml-2 capitalize font-medium
-						">
-						calendar
-					</span>
-                        </a>
-                    </li>
 
 
                 </ul>

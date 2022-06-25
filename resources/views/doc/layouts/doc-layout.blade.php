@@ -58,7 +58,7 @@
                     </li>
 
                     <li class="mt-8">
-                        <a href="/espace-client/mes-articles" class="flex items-center shadow px-3 py-2 rounded-lg  @if(request()->path() == "espace-client/mes") bg-cyan-600 text-white @else hover:scale-105 transition hover:bg-cyan-600 hover:text-white @endif ">
+                        <a href="/tableau-de-bord/rdv" class="flex items-center shadow px-3 py-2 rounded-lg  @if(request()->path() == "espace-client/mes") bg-cyan-600 text-white @else hover:scale-105 transition hover:bg-cyan-600 hover:text-white @endif ">
                             <svg
                                 class="fill-current h-5 w-5 "
                                 viewBox="0 0 24 24">
@@ -68,8 +68,7 @@
 							00-2-2h-1V1m-1 11h-5v5h5v-5z"></path>
                             </svg>
                             <span
-                                class="ml-2 capitalize font-medium
-						">
+                                class="ml-2 capitalize font-medium">
 						Rendez vous
 					</span>
                         </a>

@@ -51,7 +51,7 @@
                             @forelse($hours[$date->format('Ymd')] as $hour)
                                 <span
                                     class="btn p-2 hover:bg-cyan-300 bg-cyan-200 rounded-xl text-center mt-1 lg:w-24 sm:w-16 w-14  mx-auto font-montserrat font-bold cursor-pointer text-sm sm:text-base"
-                                    @click="timestamp = '{{$date->format('Y-m-d')}} {{$hour}}'">
+                                    @click="timestamp = '{{$date->format('Y-m-d')}} {{$hour}}';step++;">
                                     {{$hour}}
                                 </span>
                             @empty

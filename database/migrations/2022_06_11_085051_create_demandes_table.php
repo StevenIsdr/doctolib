@@ -15,11 +15,15 @@ class CreateDemandesTable extends Migration
     {
         Schema::create('demandes', function (Blueprint $table) {
             $table->id();
-            $table->timestamp('date');
+            $table->string('raison');
+            $table->string('details',500);
+            $table->string('rapport',2000)->nullable();
+            $table->timestamp('date')->nullable();
             $table->unsignedBigInteger('demandeur_id');
             $table->foreign('demandeur_id')->references('id')->on('users');
             $table->unsignedBigInteger('docteur_id');
             $table->foreign('docteur_id')->references('id')->on('users');
+            $table->tinyInteger('status')->nullable();
             $table->timestamps();
         });
     }

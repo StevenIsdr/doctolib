@@ -36,15 +36,17 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/rdv', function () {
         return view('pages.rdv');
     });
+    Route::post('/rdv/confirmer',[ClientController::class,'saveRdv']);
     Route::get('/tableau-de-bord', [ClientController::class, 'index'])->name("espace");
+    Route::get('/tableau-de-bord/mes-rdv', [ClientController::class, 'mesRdv']);
     Route::get('/tableau-de-bord/horaires', [ClientController::class, 'horaires']);
+    Route::get('/tableau-de-bord/rdv', [ClientController::class, 'rdv']);
 
 //    Route::middleware(['ismedecin'])->group(function () {
 //
 //    });
 
 });
-
 
 
 Route::middleware('guest')->group(function () {
@@ -88,6 +90,6 @@ Route::middleware('auth')->group(function () {
 
     Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
 
-    Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
+    Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 });

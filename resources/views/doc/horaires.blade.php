@@ -6,12 +6,9 @@
         <title>Mes Horaires - XENODOC</title>
     </head>
 
-
-
-    </script>
     <div class="mb-6">
-        <p class="text-2xl font-montserrat font-bold tracking-wide text-center">Selectionnez votre plage horaire</p>
-        <p class="text-base font-montserrat font-bold text-gray text-center">Utilisez cette grille pour définir vos
+        <p class="text-2xl font-bold tracking-wide text-center">Selectionnez votre plage horaire</p>
+        <p class="text-base font-bold text-gray text-center">Utilisez cette grille pour définir vos
             heure d'activité</p>
     </div>
     @if(!Auth::user()->GetGoogleClient())
