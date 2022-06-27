@@ -28,6 +28,14 @@ class RdvViewer extends Component
             $demandes);
     }
 
+    public function annuler($key){
+        $rdv = Demande::find($this->rdvs[$key]['id']);
+        if($rdv->docteur_id == Auth::user()->id){
+            $rdv->status = -1;
+            $rdv->save();
+        }
+    }
+
     public function accept($key){
         $rdv = Demande::find($this->rdvs[$key]['id']);
         if($rdv->docteur_id == Auth::user()->id){

@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 @section('content')
-    <title>BIEDOC</title>
+    <title>Xenodoc</title>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <div class="md:overflow-hidden mt-12">

@@ -12,9 +12,9 @@ use Carbon\Carbon;
 function getClient(User $user)
 {
     $client = new \Google_Client();
-    $client->setApplicationName('SoGoodVirtual');
+    $client->setApplicationName('XenoDoc');
     $client->setScopes([Google_Service_Calendar::CALENDAR_EVENTS]);
-    $client->setAuthConfig(storage_path('sogoodvirtual_google.json'));
+    $client->setAuthConfig(storage_path('xenodoc.json'));
     $client->setAccessType('offline');
     $client->setPrompt('select_account consent');
 

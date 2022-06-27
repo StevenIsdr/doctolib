@@ -2,6 +2,7 @@
 @extends('layouts.layout')
 
 @section('client-content')
+    <title>Mon Espace Patient - Xenodoc</title>
     @foreach($rdvs as $rdv)
         <div
             class="cursor-pointer bg-light w-auto shadow-xl rounded-lg bg-white p-2 mb-2"

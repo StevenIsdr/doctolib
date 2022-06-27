@@ -3,7 +3,7 @@
 
 @section('doc-content')
     <head>
-        <title>Mes Horaires - XENODOC</title>
+        <title>Gérer mes Horaires - XENODOC</title>
     </head>
 
     <div class="mb-6">
