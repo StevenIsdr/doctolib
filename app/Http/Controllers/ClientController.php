@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Demande;
+use App\Notifications\CancelDemande;
 use Google\Service\AndroidPublisher\DeactivateBasePlanRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,6 +18,16 @@ class ClientController extends Controller
         } else {
             $rdvs = Demande::where('demandeur_id', Auth::user()->id)->get();
             return view('client.client',['rdvs' => $rdvs]);
+        }
+    }
+
+    public function cancel($id){
+        $dmd = Demande::find($id);
+        if($dmd->demandeur_id == Auth::user()->id){
+            $dmd->status = -1;
+            $dmd->save();
+            $dmd->doc->notify(new CancelDemande($dmd));
+            return redirect('tableau-de-bord/mes-rdv');
         }
     }
 

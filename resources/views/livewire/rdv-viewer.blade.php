@@ -126,6 +126,10 @@
                         Rapport à faire après le {{Carbon\Carbon::create($rdv['date'])->locale('fr_FR')->isoFormat('LLL')}}
                     </div>
                 </div>
+                <button wire:click="refuse({{$key}})"
+                        class="mx-auto flex bg-red-700 rounded-lg mt-3 text-white font-bold cursor-pointer px-2 py-1 hover:scale-105 transition">
+                    Annuler le Rendez Vous
+                </button>
             </div>
         @elseif($rdv['status'] == 1)
             <div class="bg-white p-4 rounded-lg w-full mb-3 font-maven shadow-lg">

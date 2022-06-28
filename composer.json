@@ -6,6 +6,8 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "ext-json": "*",
+        "directorytree/ldaprecord": "^2.16",
         "fruitcake/laravel-cors": "^2.0",
         "google/apiclient": "2.12.1",
         "guzzlehttp/guzzle": "^7.0.1",
@@ -13,8 +15,7 @@
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "livewire/livewire": "^2.10",
-        "ext-json": "*"
+        "livewire/livewire": "^2.10"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

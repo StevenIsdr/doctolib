@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Blog;
 use App\Models\Demande;
+use App\Notifications\CancelDemande;
 use App\Notifications\ConfirmDemande;
 use Carbon\Carbon;
 use Google_Client;
@@ -34,6 +35,7 @@ class RdvViewer extends Component
             $rdv->status = -1;
             $rdv->save();
         }
+        $rdv->patient->notify(new CancelDemande($rdv));
     }
 
     public function accept($key){
@@ -67,6 +69,7 @@ class RdvViewer extends Component
         if($rdv->docteur_id == Auth::user()->id){
             $rdv->status = -1;
             $rdv->save();
+            $rdv->patient->notify(new CancelDemande($rdv));
         }
         $this->refresh();
     }
@@ -78,14 +81,36 @@ class RdvViewer extends Component
         $rdvToUpdate->status = 2;
         $rdvToUpdate->save();
 
-        Demande::create([
-            'raison' => $rdvUpdate['raison'],
-            'details' => $rdvUpdate['details'],
-            'date' => $rdvUpdate['newdate'],
-            'status' => 1,
-            'demandeur_id' => $rdvUpdate['demandeur_id'],
-            'docteur_id' => Auth::user()->id
-        ]);
+        if($rdvUpdate['newdate'] != "null"){
+            $new = Demande::create([
+                'raison' => $rdvUpdate['raison'],
+                'details' => $rdvUpdate['details'],
+                'date' => $rdvUpdate['newdate'],
+                'status' => 1,
+                'demandeur_id' => $rdvUpdate['demandeur_id'],
+                'docteur_id' => Auth::user()->id
+            ]);
+
+            $client = getClient(Auth::user());
+            if ($client instanceof Google_Client) {
+                $service = new Google_Service_Calendar($client);
+                $evt = new Google_Service_Calendar_Event(array(
+                    'summary' => "Rendez vous médical de ".$new->patient->name,
+                    'start' => array(
+                        'dateTime' => Carbon::create($new->date)->format('Y-m-d\TH:i:s'),
+                        'timeZone' => 'Europe/Paris',
+                    ),
+                    'end' => array(
+                        'dateTime' => Carbon::create($new->date)->addHour()->format('Y-m-d\TH:i:s'),
+                        'timeZone' => 'Europe/Paris',
+                    ),
+                ));
+                $service->events->insert('primary', $evt);
+            }
+            $new->patient->notify(new ConfirmDemande($new));
+        }
+
+
 
         $this->refresh();
     }

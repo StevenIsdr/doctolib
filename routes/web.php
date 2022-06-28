@@ -41,6 +41,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/tableau-de-bord/mes-rdv', [ClientController::class, 'mesRdv']);
     Route::get('/tableau-de-bord/horaires', [ClientController::class, 'horaires']);
     Route::get('/tableau-de-bord/rdv', [ClientController::class, 'rdv']);
+    Route::post('/cancel/{id}', [ClientController::class, 'cancel']);
 
 //    Route::middleware(['ismedecin'])->group(function () {
 //

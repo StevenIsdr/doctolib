@@ -33,6 +33,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div x-show="open"
                      x-transition:enter="transition duration-300"
                      x-transition:enter-start="opacity-0 scale-90"
@@ -42,17 +43,28 @@
                      x-transition:leave-end="opacity-0 scale-90">
                     <p class="font-montserrat font-bold tracking-wide text-sm">Status de la demande:</p>
                     @if($rdv->status == 1)
-                    <p class="font-montserrat font-bold tracking-wide text-sm text-green-600">Accepté</p>
-                    <p class="font-montserrat font-bold tracking-wide text-sm text-gray-600">{{ Carbon\Carbon::create($rdv->date)->locale('fr_FR')->isoFormat('LLLL')}}</p>
+                        <form action="/cancel/{{$rdv->id}}" method="post">
+                            @csrf
+                            <p class="font-montserrat font-bold tracking-wide text-sm text-green-600">Accepté</p>
+                            <p class="font-montserrat font-bold tracking-wide text-sm text-gray-600">{{ Carbon\Carbon::create($rdv->date)->locale('fr_FR')->isoFormat('LLLL')}}</p>
+                            <input type="hidden" value="{{$rdv->id}}" name="cancel">
+                            <button class="flex flex-row p-2 hover:scale-105 transition rounded-lg bg-red-600 text-white mx-auto font-bold">Annuler le rendez-vous</button>
+                        </form>
                     @elseif($rdv->status == 2)
-                    <p class="font-montserrat font-bold tracking-wide text-sm text-green-600">Terminé</p>
+                        <p class="font-montserrat font-bold tracking-wide text-sm text-green-600">Terminé</p>
                         <p class="font-montserrat font-bold tracking-wide text-sm text-gray-600">{{ Carbon\Carbon::create($rdv->date)->locale('fr_FR')->isoFormat('LLLL')}}</p>
                     @elseif($rdv->status == -1)
                         <p class="font-montserrat font-bold tracking-wide text-sm text-red-600">Refusé</p>
                         <p class="font-montserrat font-bold tracking-wide text-sm text-gray-600">{{ Carbon\Carbon::create($rdv->date)->locale('fr_FR')->isoFormat('LLLL')}}</p>
                     @else
-                        <p class="font-montserrat font-bold tracking-wide text-sm text-gray-600">En Attente d'acceptation...</p>
-                        <p class="font-montserrat font-bold tracking-wide text-sm text-gray-600">{{ Carbon\Carbon::create($rdv->date)->locale('fr_FR')->isoFormat('LLLL')}}</p>
+                        <form action="/cancel/{{$rdv->id}}" method="post">
+                            @csrf
+                            <p class="font-montserrat font-bold tracking-wide text-sm text-gray-600">En Attente
+                                d'acceptation...</p>
+                            <p class="font-montserrat font-bold tracking-wide text-sm text-gray-600">{{ Carbon\Carbon::create($rdv->date)->locale('fr_FR')->isoFormat('LLLL')}}</p>
+                            <input type="hidden" value="{{$rdv->id}}" name="cancel">
+                            <button class="flex flex-row p-2 hover:scale-105 transition rounded-lg bg-red-600 text-white mx-auto font-bold ">Annuler le rendez-vous</button>
+                        </form>
                     @endif
                 </div>
             </div>
